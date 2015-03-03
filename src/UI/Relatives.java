@@ -22,7 +22,7 @@ public class Relatives {
 	private JTextArea txtT;
 	String Q = "";// encode T into an integer string
 	private JTextArea txtA; // to display answer
-	private int maxL = 3; // the max length of Q with predefined titles
+	private int maxL = 5; // the max length of Q with predefined titles
 
 	HashMap<String, String> map = new HashMap<String, String>();// call him/her
 	HashMap<String, String> mapMale = new HashMap<String, String>();
@@ -30,7 +30,7 @@ public class Relatives {
 	HashMap<String, String> mapR = new HashMap<String, String>();// call self
 	HashMap<String, String> mapMaleR = new HashMap<String, String>();
 	HashMap<String, String> mapFemaleR = new HashMap<String, String>();
-	
+	//TODO mapReverse e.g. 1/2<->7/8
 
 	public Relatives() {
 		prepareGUI();
@@ -84,7 +84,7 @@ public class Relatives {
 		btnGroupGender.add(rdbtnFemale);
 		rdbtnFemale.setBounds(209, 7, 91, 23);
 		btnGroupGender.setSelected(rdbtnMale.getModel(), true);
-		mainFrame.getContentPane().add(rdbtnFemale);	
+		mainFrame.getContentPane().add(rdbtnFemale);
 
 		JButton btnSpouse = new JButton("\u914D\u5076\uFF08\u7684\uFF09");// 0
 		btnSpouse.addActionListener(new ActionListener() {
@@ -259,94 +259,193 @@ public class Relatives {
 	}
 
 	/**
-	 * Deal with certain patterns in the encoded string. Marked as Rules
-	 * in initializing.
+	 * Deal with certain patterns in the encoded string. Marked as Rules in
+	 * initializing.
 	 * */
 	private String clean(String q) {
-		while (q.contains("00")) {
-			// spouse's spouse = self
-			q = q.replaceAll("00", "");
+		boolean updated = false;
+		while (true) {
+			updated = false;
+			while (q.contains("00")) {
+				// spouse's spouse = self
+				q = q.replaceAll("00", "");
+				updated = true;
+			}
+			// 10 = 2; 20 = 1
+			while (q.contains("10")) {
+				q = q.replaceAll("10", "2");
+				updated = true;
+			}
+			while (q.contains("20")) {
+				q = q.replaceAll("20", "1");
+				updated = true;
+			}
+			//rule:07 = 7, 08 = 8
+			while (q.contains("07")) {
+				q = q.replaceAll("07", "7");
+				updated = true;
+			}
+			while (q.contains("08")) {
+				q = q.replaceAll("08", "8");
+				updated = true;
+			}
+
+			// 33=3,44=4,55=5,66=6
+			while (q.contains("33")) {
+				q = q.replaceAll("33", "3");
+				updated = true;
+			}
+			while (q.contains("44")) {
+				q = q.replaceAll("44", "4");
+				updated = true;
+			}
+			while (q.contains("55")) {
+				q = q.replaceAll("55", "5");
+				updated = true;
+			}
+			while (q.contains("66")) {
+				q = q.replaceAll("66", "6");
+				updated = true;
+			}
+			// rule: 31 = 41 = 51 = 61 = 1
+			// rule: 32 = 42 = 52 = 62 = 2
+			while (q.contains("31")) {
+				q = q.replaceAll("31", "1");
+				updated = true;
+			}
+			while (q.contains("41")) {
+				q = q.replaceAll("41", "1");
+				updated = true;
+			}
+			while (q.contains("51")) {
+				q = q.replaceAll("51", "1");
+				updated = true;
+			}
+			while (q.contains("61")) {
+				q = q.replaceAll("61", "1");
+				updated = true;
+			}
+			while (q.contains("32")) {
+				q = q.replaceAll("32", "2");
+				updated = true;
+			}
+			while (q.contains("42")) {
+				q = q.replaceAll("42", "2");
+				updated = true;
+			}
+			while (q.contains("52")) {
+				q = q.replaceAll("52", "2");
+				updated = true;
+			}
+			while (q.contains("62")) {
+				q = q.replaceAll("62", "2");
+				updated = true;
+			}
+			// 43 = 3, 34 = 4, 65 = 5, 56 = 6
+			while (q.contains("43")) {
+				q = q.replaceAll("43", "3");
+				updated = true;
+			}
+			while (q.contains("34")) {
+				q = q.replaceAll("34", "4");
+				updated = true;
+			}
+			while (q.contains("65")) {
+				q = q.replaceAll("65", "5");
+				updated = true;
+			}
+			while (q.contains("56")) {
+				q = q.replaceAll("56", "6");
+				updated = true;
+			}
+
+			// rule: 73 = 75 = 7, 74 = 76 = 8
+			// rule: 83 = 85 = 7, 84 = 86 = 8
+			while (q.contains("73")) {
+				q = q.replaceAll("73", "7");
+				updated = true;
+			}
+			while (q.contains("75")) {
+				q = q.replaceAll("75", "7");
+				updated = true;
+			}
+			while (q.contains("74")) {
+				q = q.replaceAll("74", "8");
+				updated = true;
+			}
+			while (q.contains("76")) {
+				q = q.replaceAll("76", "8");
+				updated = true;
+			}
+			while (q.contains("83")) {
+				q = q.replaceAll("83", "7");
+				updated = true;
+			}
+			while (q.contains("85")) {
+				q = q.replaceAll("85", "7");
+				updated = true;
+			}
+			while (q.contains("84")) {
+				q = q.replaceAll("84", "8");
+				updated = true;
+			}
+			while (q.contains("86")) {
+				q = q.replaceAll("86", "8");
+				updated = true;
+			}
+			//rule:157=137,158=138, 
+			//167=147=237=247=257=267,168=148=238=248=258=268
+			while (q.contains("157")) {
+				q = q.replaceAll("157", "137");
+				updated = true;
+			}
+			while (q.contains("158")) {
+				q = q.replaceAll("158", "138");
+				updated = true;
+			}
+			while (q.contains("167")) {
+				q = q.replaceAll("167", "147");
+				updated = true;
+			}
+			while (q.contains("237")) {
+				q = q.replaceAll("237", "147");
+				updated = true;
+			}
+			while (q.contains("247")) {
+				q = q.replaceAll("247", "147");
+				updated = true;
+			}
+			while (q.contains("257")) {
+				q = q.replaceAll("257", "147");
+				updated = true;
+			}
+			while (q.contains("267")) {
+				q = q.replaceAll("267", "147");
+				updated = true;
+			}
+			while (q.contains("168")) {
+				q = q.replaceAll("168", "148");
+				updated = true;
+			}
+			while (q.contains("238")) {
+				q = q.replaceAll("238", "148");
+				updated = true;
+			}
+			while (q.contains("248")) {
+				q = q.replaceAll("248", "148");
+				updated = true;
+			}
+			while (q.contains("258")) {
+				q = q.replaceAll("258", "148");
+				updated = true;
+			}
+			while (q.contains("268")) {
+				q = q.replaceAll("268", "148");
+				updated = true;
+			}
+			
+			if(!updated) break;
 		}
-		// 33=3,44=4,55=5,66=6
-		while (q.contains("33")) {
-			q = q.replaceAll("33", "3");
-		}
-		while (q.contains("44")) {
-			q = q.replaceAll("44", "4");
-		}
-		while (q.contains("55")) {
-			q = q.replaceAll("55", "5");
-		}
-		while (q.contains("66")) {
-			q = q.replaceAll("66", "6");
-		}
-		// rule: 31 = 41 = 51 = 61 = 1
-		// rule: 32 = 42 = 52 = 62 = 2
-		while (q.contains("31")) {
-			q = q.replaceAll("31", "1");
-		}
-		while (q.contains("41")) {
-			q = q.replaceAll("41", "1");
-		}
-		while (q.contains("51")) {
-			q = q.replaceAll("51", "1");
-		}
-		while (q.contains("61")) {
-			q = q.replaceAll("61", "1");
-		}
-		while (q.contains("32")) {
-			q = q.replaceAll("32", "2");
-		}
-		while (q.contains("42")) {
-			q = q.replaceAll("42", "2");
-		}
-		while (q.contains("52")) {
-			q = q.replaceAll("52", "2");
-		}
-		while (q.contains("62")) {
-			q = q.replaceAll("62", "2");
-		}
-		// 43 = 3, 34 = 4, 65 = 5, 56 = 6
-		while (q.contains("43")) {
-			q = q.replaceAll("43", "3");
-		}
-		while (q.contains("34")) {
-			q = q.replaceAll("34", "4");
-		}
-		while (q.contains("65")) {
-			q = q.replaceAll("65", "5");
-		}
-		while (q.contains("56")) {
-			q = q.replaceAll("56", "6");
-		}
-		
-		//rule: 73 = 75 = 7, 74 = 76 = 8
-		//rule: 83 = 85 = 7, 84 = 86 = 8
-		while (q.contains("73")) {
-			q = q.replaceAll("73", "7");
-		}
-		while (q.contains("75")) {
-			q = q.replaceAll("75", "7");
-		}
-		while (q.contains("74")) {
-			q = q.replaceAll("74", "8");
-		}
-		while (q.contains("76")) {
-			q = q.replaceAll("76", "8");
-		}
-		while (q.contains("83")) {
-			q = q.replaceAll("83", "7");
-		}
-		while (q.contains("85")) {
-			q = q.replaceAll("85", "7");
-		}
-		while (q.contains("84")) {
-			q = q.replaceAll("84", "8");
-		}
-		while (q.contains("86")) {
-			q = q.replaceAll("86", "8");
-		}
-		
 		return q;
 	}
 
@@ -365,16 +464,16 @@ public class Relatives {
 			for (int i = q.length() >= maxL ? maxL : q.length(); i > 0; i--) {
 				// length of sub string
 				String qtemp = q.substring(q.length() - i);
-				gt = this.HeOrShe(gt, q.substring(0, q.length()	- qtemp.length()));
-				String atemp = findPredefinedAnswer(gt, qtemp);
+				//gt = this.HeOrShe(gt,
+						//q.substring(0, q.length() - qtemp.length()));
+				String atemp = findPredefinedAnswer(g, qtemp);//TODO gt
 				if (atemp != null) {
 					if (q.length() == Q.length()) {
 						a = atemp;
 					} else {
 						a = atemp + "的\n" + a;
 					}
-					q = q.substring(0, q.length()
-							- qtemp.length());
+					q = q.substring(0, q.length() - qtemp.length());
 					break;
 				}
 			}
@@ -465,7 +564,7 @@ public class Relatives {
 	private void iniMaps() {
 		map.put("", "自己");
 		mapR.put("", "自己");
-		
+
 		mapMale.put("0", "老婆/妻子/夫人/太太/媳妇");
 		mapMaleR.put("0", "老公/丈夫/先生");
 		mapFemale.put("0", "老公/丈夫/先生");
@@ -481,7 +580,7 @@ public class Relatives {
 		map.put("3", "哥哥/兄长");
 		mapMaleR.put("3", "弟弟");
 		mapFemaleR.put("3", "妹妹");
-		map.put("4", "姐姐/姊");
+		map.put("4", "姐姐");
 		mapMaleR.put("4", "弟弟");
 		mapFemaleR.put("4", "妹妹");
 		map.put("5", "弟弟");
@@ -537,14 +636,20 @@ public class Relatives {
 		mapMaleR.put("12", "孙子");
 		mapFemaleR.put("12", "孙女");
 		map.put("13", "伯父/大爷");
-		map.put("14", "姑妈/姑姑");
-		map.put("15", "叔父/叔叔");
-		map.put("16", "姑妈/姑姑");
 		mapMaleR.put("13", "侄子");
 		mapFemaleR.put("13", "侄女");
+		map.put("130", "伯母/大娘");
+		sameMR("130", "13");
+		map.put("14", "姑妈/姑姑");
 		sameMR("14", "13");
+		map.put("140", "姑父/姑爹/姑丈");
+		sameMR("140", "13");
+		map.put("15", "叔父/叔叔");
 		sameMR("15", "13");
-		sameMR("16", "13");
+		map.put("150", "婶婶");
+		sameMR("150", "13");
+		same("16","14");
+		same("160","140");
 
 		mapMale.put("17", "自己或兄弟");
 		mapFemale.put("17", "兄弟");
@@ -555,10 +660,10 @@ public class Relatives {
 		mapMaleR.put("18", "兄弟");
 		mapFemaleR.put("18", "自己或姐妹");
 
-		map.put("21", "外公/姥爷");
+		map.put("21", "外公/姥爷/外祖父");
 		mapMaleR.put("21", "外孙子");
 		mapFemaleR.put("21", "外孙女");
-		map.put("22", "外婆/姥姥");
+		map.put("22", "外婆/姥姥/外祖母");
 		mapMaleR.put("22", "外孙子");
 		mapFemaleR.put("22", "外孙女");
 		map.put("23", "舅父/舅舅");
@@ -577,8 +682,7 @@ public class Relatives {
 		mapMaleR.put("28", "兄弟");
 		mapFemaleR.put("28", "自己或姐妹");
 
-		same("10", "2");
-		same("20", "1");
+		// Rule: 10 = 2, 20 = 1
 		map.put("30", "嫂子");
 		mapMaleR.put("30", findAnswer(1, "05"));
 		mapFemaleR.put("30", findAnswer(1, "06"));
@@ -596,22 +700,22 @@ public class Relatives {
 		// rule: 31 = 41 = 51 = 61 = 1
 		// rule: 32 = 42 = 52 = 62 = 2
 		// rule: 43 = 3, 34 = 4, 65 = 5, 56 = 6
-		
-		mapMale.put("53","自己或兄弟");
-		mapFemale.put("53","兄弟");
-		mapMaleR.put("53","自己或兄弟");
-		mapFemaleR.put("53","姐妹");
-		same("63","53");
-		same("35","53");
-		same("45","53");
 
-		mapMale.put("54","姐妹");
-		mapFemale.put("54","自己或姐妹");
-		mapMaleR.put("54","兄弟");
-		mapFemaleR.put("54","自己或姐妹");
-		same("64","54");
-		same("36","54");
-		same("46","54");
+		mapMale.put("35", "自己或兄弟");
+		mapFemale.put("35", "兄弟");
+		mapMaleR.put("35", "自己或兄弟");
+		mapFemaleR.put("35", "姐妹");
+		same("45", "35");
+		same("53", "35");
+		same("63", "35");
+		
+		mapMale.put("36", "姐妹");
+		mapFemale.put("36", "自己或姐妹");
+		mapMaleR.put("36", "兄弟");
+		mapFemaleR.put("36", "自己或姐妹");
+		same("46", "36");
+		same("54", "36");
+		same("64", "36");
 		
 		map.put("37", "侄子");
 		mapMaleR.put("37", map.get("15"));
@@ -636,42 +740,95 @@ public class Relatives {
 		map.put("80", mapMaleR.get("01"));
 		mapMaleR.put("80", mapMale.get("01"));
 		mapFemaleR.put("80", mapMale.get("02"));
-		
-		mapMale.put("71",map.get(""));
-		mapFemale.put("71",mapFemale.get("0"));
+
+		mapMale.put("71", map.get(""));
+		mapFemale.put("71", mapFemale.get("0"));
 		mapMaleR.put("71", map.get(""));
-		mapFemaleR.put("71",mapMale.get("0"));
-		same("81","71");
-		
-		mapMale.put("72",mapMale.get("0"));
-		mapFemale.put("72",map.get(""));
+		mapFemaleR.put("71", mapMale.get("0"));
+		same("81", "71");
+
+		mapMale.put("72", mapMale.get("0"));
+		mapFemale.put("72", map.get(""));
 		mapMaleR.put("72", mapFemale.get("0"));
 		mapFemaleR.put("72", map.get(""));
-		same("82","72");
-		
-		//rule: 73 = 75 = 7, 74 = 76 = 8
-		//rule: 83 = 85 = 7, 84 = 86 = 8
+		same("82", "72");
+
+		// rule: 73 = 75 = 7, 74 = 76 = 8
+		// rule: 83 = 85 = 7, 84 = 86 = 8
 
 		map.put("77", "孙子");
-		mapMaleR.put("77",map.get("11"));
-		mapFemaleR.put("77",map.get("12"));
-		//774 = 776  = 78孙女
+		mapMaleR.put("77", map.get("11"));
+		mapFemaleR.put("77", map.get("12"));
+		// 774 = 776 = 78孙女
 		map.put("78", "孙女");
-		sameMR("78","77");
+		sameMR("78", "77");
 		map.put("87", "外孙子");
-		mapMaleR.put("87",map.get("21"));
-		mapFemaleR.put("87",map.get("22"));
+		mapMaleR.put("87", map.get("21"));
+		mapFemaleR.put("87", map.get("22"));
 		map.put("88", "外孙女");
-		sameMR("88","87");
+		sameMR("88", "87");
 
 		mapFemale.put("030", "大伯嫂/妯娌/嫂子");
 		mapFemale.put("050", "妯娌/弟妹/弟媳");
 		mapMale.put("040", "连桥/连襟/姐夫");
 		mapMale.put("060", "连桥/连襟/妹夫");
+
 		
-		//TODO:高祖、曾祖、祖父、自己、子、孙、重孙、玄孙
+		//1+3/5+7or8 堂兄弟姐妹,  1+4/6+7or8 表兄弟姐妹
+		//2+3/5/4/6+7or8 表兄弟姐妹
+		//rule:157=137,158=138, 
+		//167=147=237=247=257=267,168=148=238=248=258=268
+		map.put("137","堂兄弟");
+		////same("157","137");
+		map.put("138","堂姐妹");
+		////same("158","138");
+		map.put("147","表兄弟");
+		////same("167","147");
+		map.put("148","表姐妹");
+		////same("168","148");
+		////map.put("237","表兄弟");
+		////same("257","237");
+		////same("247","237");
+		////same("267","237");
+		////map.put("238","表姐妹");
+		////same("258","238");
+		////same("248","238");
+		////same("268","238");
+		//rule:07 = 7, 08 = 8
+		
+		//堂兄弟+7or8 堂房侄子侄女
+		//堂姐妹+7or8 堂房外甥外甥女
+		//表兄弟+7or8 表侄子侄女
+		//表姐妹+7or8 表外甥外甥女
+		map.put("1377","堂房侄子");
+		map.put("1378","堂房侄女");
+		map.put("1387","堂房外甥");
+		map.put("1388","堂房外甥女");
+		map.put("1477","表侄子");
+		map.put("1478","表侄女");
+		map.put("1487","表外甥");
+		map.put("1488","表外甥女");
+		
+		map.put("113", "大爷、二爷等");
+		map.put("1130", "大奶奶、二奶奶等");
+		map.put("1137", "表伯或表叔");
+		map.put("11370", "表婶");
+		map.put("1138", "表姑");
+		map.put("11380", "表姑父");
+		map.put("115", "大爷、二爷等");
+		map.put("1150", "大奶奶、二奶奶等");
+		map.put("114", "姑奶奶");
+		map.put("1140", "姑爷");
+		map.put("116", "姑奶奶");
+		map.put("1160", "姑爷");
+		
 		map.put("111", "曾祖父");
 		map.put("112", "曾祖母");
+		map.put("113", "伯祖父");
+		map.put("115", "叔祖父");
+		map.put("114", "姑奶奶");
+		map.put("116", "姑奶奶");
+		
 		map.put("1111", "高祖父");
 		map.put("1112", "高祖母");
 		map.put("777", "重孙");
