@@ -89,7 +89,7 @@ public class Relatives {
 		JButton btnSpouse = new JButton("\u914D\u5076\uFF08\u7684\uFF09");// 0
 		btnSpouse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtT.append("ÅäÅ¼(µÄ) ");
+				txtT.append("é…å¶(çš„) ");
 				Q += "0";
 			}
 		});
@@ -99,7 +99,7 @@ public class Relatives {
 		JButton btnDad = new JButton("\u7236\u4EB2\uFF08\u7684\uFF09");// 1
 		btnDad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtT.append("¸¸Ç×(µÄ) ");
+				txtT.append("çˆ¶äº²(çš„) ");
 				Q += "1";
 			}
 		});
@@ -109,7 +109,7 @@ public class Relatives {
 		JButton btnMom = new JButton("\u6BCD\u4EB2\uFF08\u7684\uFF09");// 2
 		btnMom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtT.append("Ä¸Ç×(µÄ) ");
+				txtT.append("æ¯äº²(çš„) ");
 				Q += "2";
 			}
 		});
@@ -119,7 +119,7 @@ public class Relatives {
 		JButton btnEBro = new JButton("\u54E5\u54E5\uFF08\u7684\uFF09");// 3
 		btnEBro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtT.append("¸ç¸ç(µÄ) ");
+				txtT.append("å“¥å“¥(çš„) ");
 				Q += "3";
 			}
 		});
@@ -129,7 +129,7 @@ public class Relatives {
 		JButton btnES = new JButton("\u59D0\u59D0\uFF08\u7684\uFF09");// 4
 		btnES.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtT.append("½ã½ã(µÄ) ");
+				txtT.append("å§å§(çš„) ");
 				Q += "4";
 			}
 		});
@@ -139,7 +139,7 @@ public class Relatives {
 		JButton btnYBro = new JButton("\u5F1F\u5F1F\uFF08\u7684\uFF09");// 5
 		btnYBro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtT.append("µÜµÜ(µÄ) ");
+				txtT.append("å¼Ÿå¼Ÿ(çš„) ");
 				Q += "5";
 			}
 		});
@@ -149,7 +149,7 @@ public class Relatives {
 		JButton btnYS = new JButton("\u59B9\u59B9\uFF08\u7684\uFF09");// 6
 		btnYS.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtT.append("ÃÃÃÃ(µÄ) ");
+				txtT.append("å¦¹å¦¹(çš„) ");
 				Q += "6";
 			}
 		});
@@ -159,7 +159,7 @@ public class Relatives {
 		JButton btnSon = new JButton("\u513F\u5B50\uFF08\u7684\uFF09");// 7
 		btnSon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtT.append("¶ù×Ó(µÄ) ");
+				txtT.append("å„¿å­(çš„) ");
 				Q += "7";
 			}
 		});
@@ -169,7 +169,7 @@ public class Relatives {
 		JButton btnDaughter = new JButton("\u5973\u513F\uFF08\u7684\uFF09");// 8
 		btnDaughter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtT.append("Å®¶ù(µÄ) ");
+				txtT.append("å¥³å„¿(çš„) ");
 				Q += "8";
 			}
 		});
@@ -181,14 +181,14 @@ public class Relatives {
 			public void actionPerformed(ActionEvent e) {
 				Q = clean(Q);
 				if (Q == null) {
-					txtA.setText("Çëµã»÷Ñ¡ÔñÇ×Ôµ¹ØÏµ");
+					txtA.setText("è¯·ç‚¹å‡»é€‰æ‹©äº²ç¼˜å…³ç³»");
 					return;
 				}
 				if (HeOrShe(gender, Q) == 1) {// Female
-					txtA.setText(findAnswer(gender, Q) + ".\n" + "\nÎÒÊÇËıµÄ    "
+					txtA.setText(findAnswer(gender, Q) + ".\n" + "\næˆ‘æ˜¯å¥¹çš„    "
 							+ findPredefinedReverse(gender, Q) + "");
 				} else {
-					txtA.setText(findAnswer(gender, Q) + ".\n" + "\nÎÒÊÇËûµÄ    "
+					txtA.setText(findAnswer(gender, Q) + ".\n" + "\næˆ‘æ˜¯ä»–çš„    "
 							+ findPredefinedReverse(gender, Q) + "");
 				}
 
@@ -371,7 +371,7 @@ public class Relatives {
 					if (q.length() == Q.length()) {
 						a = atemp;
 					} else {
-						a = atemp + "µÄ\n" + a;
+						a = atemp + "çš„\n" + a;
 					}
 					q = q.substring(0, q.length()
 							- qtemp.length());
@@ -463,132 +463,132 @@ public class Relatives {
 	 * Predefine common titles. Rules are implemented later in function Clean().
 	 * */
 	private void iniMaps() {
-		map.put("", "×Ô¼º");
-		mapR.put("", "×Ô¼º");
+		map.put("", "è‡ªå·±");
+		mapR.put("", "è‡ªå·±");
 		
-		mapMale.put("0", "ÀÏÆÅ/ÆŞ×Ó/·òÈË/Ì«Ì«/Ï±¸¾");
-		mapMaleR.put("0", "ÀÏ¹«/ÕÉ·ò/ÏÈÉú");
-		mapFemale.put("0", "ÀÏ¹«/ÕÉ·ò/ÏÈÉú");
-		mapFemaleR.put("0", "ÀÏÆÅ/ÆŞ×Ó/·òÈË/Ì«Ì«/Ï±¸¾");
+		mapMale.put("0", "è€å©†/å¦»å­/å¤«äºº/å¤ªå¤ª/åª³å¦‡");
+		mapMaleR.put("0", "è€å…¬/ä¸ˆå¤«/å…ˆç”Ÿ");
+		mapFemale.put("0", "è€å…¬/ä¸ˆå¤«/å…ˆç”Ÿ");
+		mapFemaleR.put("0", "è€å©†/å¦»å­/å¤«äºº/å¤ªå¤ª/åª³å¦‡");
 		// Rule: "00" = ""
 
-		map.put("1", "¸¸Ç×/°Ö°Ö/µù");
-		mapMaleR.put("1", "¶ù×Ó");
-		mapFemaleR.put("1", "Å®¶ù");
-		map.put("2", "Ä¸Ç×/ÂèÂè/Äï");
-		mapMaleR.put("2", "¶ù×Ó");
-		mapFemaleR.put("2", "Å®¶ù");
-		map.put("3", "¸ç¸ç/ĞÖ³¤");
-		mapMaleR.put("3", "µÜµÜ");
-		mapFemaleR.put("3", "ÃÃÃÃ");
-		map.put("4", "½ã½ã/æ¢");
-		mapMaleR.put("4", "µÜµÜ");
-		mapFemaleR.put("4", "ÃÃÃÃ");
-		map.put("5", "µÜµÜ");
-		mapMaleR.put("5", "¸ç¸ç/ĞÖ³¤");
-		mapFemaleR.put("5", "½ã½ã");
-		map.put("6", "ÃÃÃÃ");
-		mapMaleR.put("6", "¸ç¸ç/ĞÖ³¤");
-		mapFemaleR.put("6", "½ã½ã");
-		map.put("7", "¶ù×Ó");
-		mapMaleR.put("7", "¸¸Ç×/°Ö°Ö/µù");
-		mapFemaleR.put("7", "Ä¸Ç×/ÂèÂè/Äï");
-		map.put("8", "Å®¶ù");
-		mapMaleR.put("8", "¸¸Ç×/°Ö°Ö/µù");
-		mapFemaleR.put("8", "Ä¸Ç×/ÂèÂè/Äï");
+		map.put("1", "çˆ¶äº²/çˆ¸çˆ¸/çˆ¹");
+		mapMaleR.put("1", "å„¿å­");
+		mapFemaleR.put("1", "å¥³å„¿");
+		map.put("2", "æ¯äº²/å¦ˆå¦ˆ/å¨˜");
+		mapMaleR.put("2", "å„¿å­");
+		mapFemaleR.put("2", "å¥³å„¿");
+		map.put("3", "å“¥å“¥/å…„é•¿");
+		mapMaleR.put("3", "å¼Ÿå¼Ÿ");
+		mapFemaleR.put("3", "å¦¹å¦¹");
+		map.put("4", "å§å§/å§Š");
+		mapMaleR.put("4", "å¼Ÿå¼Ÿ");
+		mapFemaleR.put("4", "å¦¹å¦¹");
+		map.put("5", "å¼Ÿå¼Ÿ");
+		mapMaleR.put("5", "å“¥å“¥/å…„é•¿");
+		mapFemaleR.put("5", "å§å§");
+		map.put("6", "å¦¹å¦¹");
+		mapMaleR.put("6", "å“¥å“¥/å…„é•¿");
+		mapFemaleR.put("6", "å§å§");
+		map.put("7", "å„¿å­");
+		mapMaleR.put("7", "çˆ¶äº²/çˆ¸çˆ¸/çˆ¹");
+		mapFemaleR.put("7", "æ¯äº²/å¦ˆå¦ˆ/å¨˜");
+		map.put("8", "å¥³å„¿");
+		mapMaleR.put("8", "çˆ¶äº²/çˆ¸çˆ¸/çˆ¹");
+		mapFemaleR.put("8", "æ¯äº²/å¦ˆå¦ˆ/å¨˜");
 
-		mapMale.put("01", "ÔÀÕÉ/ÔÀ¸¸");
-		mapMaleR.put("01", "Å®Ğö");
-		mapFemale.put("01", "¹«¹«");
-		mapFemaleR.put("01", "¶ùÏ±¸¾");
+		mapMale.put("01", "å²³ä¸ˆ/å²³çˆ¶");
+		mapMaleR.put("01", "å¥³å©¿");
+		mapFemale.put("01", "å…¬å…¬");
+		mapFemaleR.put("01", "å„¿åª³å¦‡");
 
-		mapMale.put("02", "ÔÀÄ¸/ÕÉÄ¸Äï");
-		mapMaleR.put("02", "Å®Ğö");
-		mapFemale.put("02", "ÆÅÆÅ");
-		mapFemaleR.put("02", "¶ùÏ±¸¾");
+		mapMale.put("02", "å²³æ¯/ä¸ˆæ¯å¨˜");
+		mapMaleR.put("02", "å¥³å©¿");
+		mapFemale.put("02", "å©†å©†");
+		mapFemaleR.put("02", "å„¿åª³å¦‡");
 
-		mapMale.put("03", "´ó¾Ë¸ç/´ó¾Ë×Ó/¸ç¸ç");
-		mapMaleR.put("03", "ÃÃ·ò");
-		mapFemale.put("03", "´ó²®/¸ç¸ç");
-		mapFemaleR.put("03", "µÜÃÃ/µÜÏ±");
+		mapMale.put("03", "å¤§èˆ…å“¥/å¤§èˆ…å­/å“¥å“¥");
+		mapMaleR.put("03", "å¦¹å¤«");
+		mapFemale.put("03", "å¤§ä¼¯/å“¥å“¥");
+		mapFemaleR.put("03", "å¼Ÿå¦¹/å¼Ÿåª³");
 
-		mapMale.put("04", "´óÒÌ½ã/½ã½ã");
-		mapMaleR.put("04", "ÃÃ·ò");
-		mapFemale.put("04", "´ó¹Ã½ã/½ã½ã");
-		mapFemaleR.put("04", "µÜÃÃ/µÜÏ±");
+		mapMale.put("04", "å¤§å§¨å§/å§å§");
+		mapMaleR.put("04", "å¦¹å¤«");
+		mapFemale.put("04", "å¤§å§‘å§/å§å§");
+		mapFemaleR.put("04", "å¼Ÿå¦¹/å¼Ÿåª³");
 
-		mapMale.put("05", "Ğ¡¾Ë×Ó/µÜµÜ");
-		mapMaleR.put("05", "½ã·ò");
-		mapFemale.put("05", "Ğ¡Êå×Ó/µÜµÜ");
-		mapFemaleR.put("05", "É©×Ó");
+		mapMale.put("05", "å°èˆ…å­/å¼Ÿå¼Ÿ");
+		mapMaleR.put("05", "å§å¤«");
+		mapFemale.put("05", "å°å”å­/å¼Ÿå¼Ÿ");
+		mapFemaleR.put("05", "å«‚å­");
 
-		mapMale.put("06", "Ğ¡ÒÌ×Ó/ÃÃÃÃ");
-		mapMaleR.put("06", "½ã·ò");
-		mapFemale.put("06", "Ğ¡¹Ã×Ó/ÃÃÃÃ");
-		mapFemaleR.put("06", "É©×Ó");
+		mapMale.put("06", "å°å§¨å­/å¦¹å¦¹");
+		mapMaleR.put("06", "å§å¤«");
+		mapFemale.put("06", "å°å§‘å­/å¦¹å¦¹");
+		mapFemaleR.put("06", "å«‚å­");
 		// blood only
 		same("07", "7");
 		same("08", "8");
 
-		map.put("11", "×æ¸¸/Ò¯Ò¯");
-		mapMaleR.put("11", "Ëï×Ó");
-		mapFemaleR.put("11", "ËïÅ®");
-		map.put("12", "×æÄ¸/ÄÌÄÌ");
-		mapMaleR.put("12", "Ëï×Ó");
-		mapFemaleR.put("12", "ËïÅ®");
-		map.put("13", "²®¸¸/´óÒ¯");
-		map.put("14", "¹ÃÂè/¹Ã¹Ã");
-		map.put("15", "Êå¸¸/ÊåÊå");
-		map.put("16", "¹ÃÂè/¹Ã¹Ã");
-		mapMaleR.put("13", "Ö¶×Ó");
-		mapFemaleR.put("13", "Ö¶Å®");
+		map.put("11", "ç¥–çˆ¶/çˆ·çˆ·");
+		mapMaleR.put("11", "å­™å­");
+		mapFemaleR.put("11", "å­™å¥³");
+		map.put("12", "ç¥–æ¯/å¥¶å¥¶");
+		mapMaleR.put("12", "å­™å­");
+		mapFemaleR.put("12", "å­™å¥³");
+		map.put("13", "ä¼¯çˆ¶/å¤§çˆ·");
+		map.put("14", "å§‘å¦ˆ/å§‘å§‘");
+		map.put("15", "å”çˆ¶/å”å”");
+		map.put("16", "å§‘å¦ˆ/å§‘å§‘");
+		mapMaleR.put("13", "ä¾„å­");
+		mapFemaleR.put("13", "ä¾„å¥³");
 		sameMR("14", "13");
 		sameMR("15", "13");
 		sameMR("16", "13");
 
-		mapMale.put("17", "×Ô¼º»òĞÖµÜ");
-		mapFemale.put("17", "ĞÖµÜ");
-		mapMaleR.put("17", "×Ô¼º»òĞÖµÜ");
-		mapFemaleR.put("17", "½ãÃÃ");
-		mapMale.put("18", "½ãÃÃ");
-		mapFemale.put("18", "×Ô¼º»ò½ãÃÃ");
-		mapMaleR.put("18", "ĞÖµÜ");
-		mapFemaleR.put("18", "×Ô¼º»ò½ãÃÃ");
+		mapMale.put("17", "è‡ªå·±æˆ–å…„å¼Ÿ");
+		mapFemale.put("17", "å…„å¼Ÿ");
+		mapMaleR.put("17", "è‡ªå·±æˆ–å…„å¼Ÿ");
+		mapFemaleR.put("17", "å§å¦¹");
+		mapMale.put("18", "å§å¦¹");
+		mapFemale.put("18", "è‡ªå·±æˆ–å§å¦¹");
+		mapMaleR.put("18", "å…„å¼Ÿ");
+		mapFemaleR.put("18", "è‡ªå·±æˆ–å§å¦¹");
 
-		map.put("21", "Íâ¹«/ÀÑÒ¯");
-		mapMaleR.put("21", "ÍâËï×Ó");
-		mapFemaleR.put("21", "ÍâËïÅ®");
-		map.put("22", "ÍâÆÅ/ÀÑÀÑ");
-		mapMaleR.put("22", "ÍâËï×Ó");
-		mapFemaleR.put("22", "ÍâËïÅ®");
-		map.put("23", "¾Ë¸¸/¾Ë¾Ë");
-		mapMaleR.put("23", "ÍâÉû");
-		mapFemaleR.put("23", "ÍâÉûÅ®");
+		map.put("21", "å¤–å…¬/å§¥çˆ·");
+		mapMaleR.put("21", "å¤–å­™å­");
+		mapFemaleR.put("21", "å¤–å­™å¥³");
+		map.put("22", "å¤–å©†/å§¥å§¥");
+		mapMaleR.put("22", "å¤–å­™å­");
+		mapFemaleR.put("22", "å¤–å­™å¥³");
+		map.put("23", "èˆ…çˆ¶/èˆ…èˆ…");
+		mapMaleR.put("23", "å¤–ç”¥");
+		mapFemaleR.put("23", "å¤–ç”¥å¥³");
 		same("25", "23");
-		map.put("24", "ÒÌÄ¸/°¢ÒÌ");
+		map.put("24", "å§¨æ¯/é˜¿å§¨");
 		sameMR("24", "23");
 		same("26", "24");
-		mapMale.put("27", "×Ô¼º»òĞÖµÜ");
-		mapFemale.put("27", "ĞÖµÜ");
-		mapMaleR.put("27", "×Ô¼º»òĞÖµÜ");
-		mapFemaleR.put("27", "½ãÃÃ");
-		mapMale.put("28", "½ãÃÃ");
-		mapFemale.put("28", "×Ô¼º»ò½ãÃÃ");
-		mapMaleR.put("28", "ĞÖµÜ");
-		mapFemaleR.put("28", "×Ô¼º»ò½ãÃÃ");
+		mapMale.put("27", "è‡ªå·±æˆ–å…„å¼Ÿ");
+		mapFemale.put("27", "å…„å¼Ÿ");
+		mapMaleR.put("27", "è‡ªå·±æˆ–å…„å¼Ÿ");
+		mapFemaleR.put("27", "å§å¦¹");
+		mapMale.put("28", "å§å¦¹");
+		mapFemale.put("28", "è‡ªå·±æˆ–å§å¦¹");
+		mapMaleR.put("28", "å…„å¼Ÿ");
+		mapFemaleR.put("28", "è‡ªå·±æˆ–å§å¦¹");
 
 		same("10", "2");
 		same("20", "1");
-		map.put("30", "É©×Ó");
+		map.put("30", "å«‚å­");
 		mapMaleR.put("30", findAnswer(1, "05"));
 		mapFemaleR.put("30", findAnswer(1, "06"));
-		map.put("40", "½ã·ò");
+		map.put("40", "å§å¤«");
 		mapMaleR.put("40", findAnswer(0, "05"));
 		mapFemaleR.put("40", findAnswer(0, "06"));
-		map.put("50", "µÜÃÃ/µÜÏ±");
+		map.put("50", "å¼Ÿå¦¹/å¼Ÿåª³");
 		mapMaleR.put("50", findAnswer(1, "03"));
 		mapFemaleR.put("50", findAnswer(1, "04"));
-		map.put("60", "ÃÃ·ò");
+		map.put("60", "å¦¹å¤«");
 		mapMaleR.put("60", findAnswer(0, "03"));
 		mapFemaleR.put("60", findAnswer(0, "04"));
 
@@ -597,35 +597,35 @@ public class Relatives {
 		// rule: 32 = 42 = 52 = 62 = 2
 		// rule: 43 = 3, 34 = 4, 65 = 5, 56 = 6
 		
-		mapMale.put("53","×Ô¼º»òĞÖµÜ");
-		mapFemale.put("53","ĞÖµÜ");
-		mapMaleR.put("53","×Ô¼º»òĞÖµÜ");
-		mapFemaleR.put("53","½ãÃÃ");
+		mapMale.put("53","è‡ªå·±æˆ–å…„å¼Ÿ");
+		mapFemale.put("53","å…„å¼Ÿ");
+		mapMaleR.put("53","è‡ªå·±æˆ–å…„å¼Ÿ");
+		mapFemaleR.put("53","å§å¦¹");
 		same("63","53");
 		same("35","53");
 		same("45","53");
 
-		mapMale.put("54","½ãÃÃ");
-		mapFemale.put("54","×Ô¼º»ò½ãÃÃ");
-		mapMaleR.put("54","ĞÖµÜ");
-		mapFemaleR.put("54","×Ô¼º»ò½ãÃÃ");
+		mapMale.put("54","å§å¦¹");
+		mapFemale.put("54","è‡ªå·±æˆ–å§å¦¹");
+		mapMaleR.put("54","å…„å¼Ÿ");
+		mapFemaleR.put("54","è‡ªå·±æˆ–å§å¦¹");
 		same("64","54");
 		same("36","54");
 		same("46","54");
 		
-		map.put("37", "Ö¶×Ó");
+		map.put("37", "ä¾„å­");
 		mapMaleR.put("37", map.get("15"));
 		mapFemaleR.put("37", map.get("16"));
-		map.put("47", "ÍâÉû");
+		map.put("47", "å¤–ç”¥");
 		mapMaleR.put("47", map.get("25"));
 		mapFemaleR.put("47", map.get("26"));
 		sameM("57", "37");
 		mapMaleR.put("57", map.get("13"));
 		mapFemaleR.put("57", map.get("14"));
 		same("67", "47");
-		map.put("38", "Ö¶Å®");
+		map.put("38", "ä¾„å¥³");
 		sameMR("38", "37");
-		map.put("48", "ÍâÉûÅ®");
+		map.put("48", "å¤–ç”¥å¥³");
 		sameMR("48", "47");
 		same("58", "38");
 		same("68", "48");
@@ -652,30 +652,30 @@ public class Relatives {
 		//rule: 73 = 75 = 7, 74 = 76 = 8
 		//rule: 83 = 85 = 7, 84 = 86 = 8
 
-		map.put("77", "Ëï×Ó");
+		map.put("77", "å­™å­");
 		mapMaleR.put("77",map.get("11"));
 		mapFemaleR.put("77",map.get("12"));
-		//774 = 776  = 78ËïÅ®
-		map.put("78", "ËïÅ®");
+		//774 = 776  = 78å­™å¥³
+		map.put("78", "å­™å¥³");
 		sameMR("78","77");
-		map.put("87", "ÍâËï×Ó");
+		map.put("87", "å¤–å­™å­");
 		mapMaleR.put("87",map.get("21"));
 		mapFemaleR.put("87",map.get("22"));
-		map.put("88", "ÍâËïÅ®");
+		map.put("88", "å¤–å­™å¥³");
 		sameMR("88","87");
 
-		mapFemale.put("030", "´ó²®É©/æ¨æ²/É©×Ó");
-		mapFemale.put("050", "æ¨æ²/µÜÃÃ/µÜÏ±");
-		mapMale.put("040", "Á¬ÇÅ/Á¬½ó/½ã·ò");
-		mapMale.put("060", "Á¬ÇÅ/Á¬½ó/ÃÃ·ò");
+		mapFemale.put("030", "å¤§ä¼¯å«‚/å¦¯å¨Œ/å«‚å­");
+		mapFemale.put("050", "å¦¯å¨Œ/å¼Ÿå¦¹/å¼Ÿåª³");
+		mapMale.put("040", "è¿æ¡¥/è¿è¥Ÿ/å§å¤«");
+		mapMale.put("060", "è¿æ¡¥/è¿è¥Ÿ/å¦¹å¤«");
 		
-		//TODO:¸ß×æ¡¢Ôø×æ¡¢×æ¸¸¡¢×Ô¼º¡¢×Ó¡¢Ëï¡¢ÖØËï¡¢ĞşËï
-		map.put("111", "Ôø×æ¸¸");
-		map.put("112", "Ôø×æÄ¸");
-		map.put("1111", "¸ß×æ¸¸");
-		map.put("1112", "¸ß×æÄ¸");
-		map.put("777", "ÖØËï");
-		map.put("7777", "ĞşËï");
+		//TODO:é«˜ç¥–ã€æ›¾ç¥–ã€ç¥–çˆ¶ã€è‡ªå·±ã€å­ã€å­™ã€é‡å­™ã€ç„å­™
+		map.put("111", "æ›¾ç¥–çˆ¶");
+		map.put("112", "æ›¾ç¥–æ¯");
+		map.put("1111", "é«˜ç¥–çˆ¶");
+		map.put("1112", "é«˜ç¥–æ¯");
+		map.put("777", "é‡å­™");
+		map.put("7777", "ç„å­™");
 
 		/*
 		 * map.put("", ""); mapMaleR.put("", ""); mapFemaleR.put("", "");
