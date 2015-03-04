@@ -184,13 +184,15 @@ public class Relatives {
 					txtA.setText("请点击选择亲缘关系");
 					return;
 				}
-				if (HeOrShe(gender, Q) == 1) {// Female
+				txtA.setText(findAnswer(gender, Q));
+				
+/*				if (HeOrShe(gender, Q) == 1) {// Female
 					txtA.setText(findAnswer(gender, Q) + ".\n" + "\n我是她的    "
-							+ findPredefinedReverse(gender, Q) + "");
+						+ findPredefinedReverse(gender, Q) + "");
 				} else {
 					txtA.setText(findAnswer(gender, Q) + ".\n" + "\n我是他的    "
-							+ findPredefinedReverse(gender, Q) + "");
-				}
+						+ findPredefinedReverse(gender, Q) + "");
+				}*/
 
 			}
 		});
@@ -461,6 +463,7 @@ public class Relatives {
 		String a = "";
 		int gt = g;
 		while (!q.isEmpty()) {// fwd or bkd
+			//TODO: break at end of 0, 1, 2, 3456, 7, 8
 			for (int i = q.length() >= maxL ? maxL : q.length(); i > 0; i--) {
 				// length of sub string
 				String qtemp = q.substring(q.length() - i);
@@ -510,6 +513,13 @@ public class Relatives {
 		return a;
 	}
 
+	/**
+	 * TODO
+	 * */
+	public String findReverse(int g, String q){
+		return null;
+	}
+	
 	public String findPredefinedReverse(int g, String q) {
 		if (mapR.get(q) != null)
 			return mapR.get(q);
@@ -809,34 +819,114 @@ public class Relatives {
 		map.put("1487","表外甥");
 		map.put("1488","表外甥女");
 		
-		map.put("113", "大爷、二爷等");
+		map.put("111", "曾祖父");
+		map.put("112", "曾祖母");
+		
+		map.put("1111", "高祖父");
+		map.put("1112", "高祖母");
+		
+		map.put("113", "伯祖父/大爷、二爷等");
 		map.put("1130", "大奶奶、二奶奶等");
 		map.put("1137", "表伯或表叔");
 		map.put("11370", "表婶");
 		map.put("1138", "表姑");
 		map.put("11380", "表姑父");
-		map.put("115", "大爷、二爷等");
-		map.put("1150", "大奶奶、二奶奶等");
 		map.put("114", "姑奶奶");
 		map.put("1140", "姑爷");
-		map.put("116", "姑奶奶");
-		map.put("1160", "姑爷");
+		sameM("1147","1137");
+		sameM("11470","11370");
+		sameM("1148","1138");
+		sameM("11480","11380");
+		map.put("115", "叔祖父/大爷、二爷等");
+		sameM("1150","1130");
+		sameM("1157","1137");
+		sameM("11570","11370");
+		sameM("1158","1138");
+		sameM("11580","11380");
+		sameM("116","114");
+		sameM("1160","1140");
+		sameM("1167","1137");
+		sameM("11670","11370");
+		sameM("1168","1138");
+		sameM("11680","11380");
 		
-		map.put("111", "曾祖父");
-		map.put("112", "曾祖母");
-		map.put("113", "伯祖父");
-		map.put("115", "叔祖父");
-		map.put("114", "姑奶奶");
-		map.put("116", "姑奶奶");
+		map.put("123", "舅爷");
+		map.put("1230", "舅奶奶");
+		map.put("1237", "表伯或表叔");
+		map.put("12370", "表婶");
+		map.put("1238", "表姑");
+		map.put("12380", "表姑父");
+		map.put("124","姨奶奶");
+		map.put("1240","姨爷爷");
+		sameM("1247","1237");
+		sameM("12470","12370");
+		sameM("1248","1238");
+		sameM("12480","12380");
+		sameM("125","123");
+		sameM("1250","1230");
+		sameM("1257","1237");
+		sameM("12570","12370");
+		sameM("1258","1238");
+		sameM("12580","12380");
+		sameM("126","124");
+		sameM("1260","1240");
+		sameM("1267","1237");
+		sameM("12670","12370");
+		sameM("1268","1238");
+		sameM("12680","12380");
 		
-		map.put("1111", "高祖父");
-		map.put("1112", "高祖母");
+		map.put("213", "大姥爷、二姥爷等");
+		map.put("2130", "大姥姥、二姥姥等");
+		map.put("2137", "表舅舅");
+		map.put("21370", "表舅妈");
+		map.put("2138", "表姨母");
+		map.put("21380", "表姨夫");
+		map.put("214", "姑姥姥");
+		map.put("2140", "姑姥爷");
+		sameM("2147","2137");
+		sameM("21470","21370");
+		sameM("2148","2138");
+		sameM("21480","21380");
+		sameM("215","213");
+		sameM("2150","2130");
+		sameM("2157","2137");
+		sameM("21570","21370");
+		sameM("2158","2138");
+		sameM("21580","21380");
+		sameM("216","214");
+		sameM("2160","2144");
+		sameM("2167","2137");
+		sameM("21670","21370");
+		sameM("2168","2138");
+		sameM("21680","21380");
+		
+		map.put("223", "舅姥爷");
+		map.put("2230", "舅姥姥");
+		map.put("2237", "表舅舅");
+		map.put("22370", "表舅妈");
+		map.put("2238", "表姨母");
+		map.put("22380", "表姨夫");
+		map.put("224","姨姥姥");
+		map.put("2240","姨姥爷");
+		sameM("2247","2237");
+		sameM("22470","22370");
+		sameM("2248","2238");
+		sameM("22480","22380");
+		sameM("225","223");
+		sameM("2250","2230");
+		sameM("2257","2237");
+		sameM("22570","22370");
+		sameM("2258","2238");
+		sameM("22580","22380");
+		sameM("226","224");
+		sameM("2260","2240");
+		sameM("2267","2237");
+		sameM("22670","22370");
+		sameM("2268","2238");
+		sameM("22680","22380");
+		
 		map.put("777", "重孙");
 		map.put("7777", "玄孙");
-
-		/*
-		 * map.put("", ""); mapMaleR.put("", ""); mapFemaleR.put("", "");
-		 */
 	}
 
 	/**
